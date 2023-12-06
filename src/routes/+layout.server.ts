@@ -1,32 +1,25 @@
-interface NavLink {
-    icon: string;
-    name: string;
-    link: string;
-}
-
-const nav_links = [
+const nav_links: NavLink[] = [
     {
         icon: 'mdi:web',
-        name: 'Projects',
-        link: '/projects'
+        text: 'Projects',
+        href: '/projects'
     },
     {
         icon: 'mdi:text-box',
-        name: 'Resume',
-        link: '/resume'
+        text: 'Resume',
+        href: '/resume'
     },
     {
         icon: 'mdi:post',
-        name: 'Blog',
-        link: '/blog'
+        text: 'Blog',
+        href: '/blog'
     },
     {
         icon: 'mdi:email-variant',
-        name: 'Contact',
-        link: '/contact'
+        text: 'Contact',
+        href: '/contact'
     }
-] as NavLink[];
-
+];
 
 export const load = async () => {
     return {
