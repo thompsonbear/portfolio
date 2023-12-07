@@ -14,8 +14,10 @@
 </svelte:head>
 
 <div class="w-full flex flex-col items-center">
-	<div class="max-w-[1200px] flex flex-col w-full px-12">
-		<div class="absolute top-0 left-0 rounded-full bg-blue-300 w-[60vw]" />
+	<div class="max-w-[1200px] flex flex-col w-full px-12 relative">
+		<div
+			class="absolute top-12 -left-12 rounded-full bg-blue-300 w-[80vw] lg:w-[45vw] aspect-square -z-50 blur-3xl opacity-10"
+		/>
 		<Header {nav_links} />
 		<slot />
 	</div>

@@ -16,7 +16,7 @@
 
 <section class="grid lg:grid-cols-2 gap-4 h-[80vh]">
 	<div class="flex flex-col justify-around">
-		<div class="w-fit space-y-2">
+		<div class="w-fit">
 			<h1 class="text-2xl lg:text-5xl">Hey,</h1>
 			<h1 class="text-[9vw] lg:text-[4vw] font-bold whitespace-nowrap">I'm Thompson</h1>
 			<p class="font-light text-gray-400">Cloud/Systems Engineer and Developer</p>
