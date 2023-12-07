@@ -16,10 +16,10 @@
 
 <section class="grid lg:grid-cols-2 gap-4 h-[80vh]">
 	<div class="flex flex-col justify-around">
-		<div class="w-fit">
-			<h1 class="text-5xl">Hey,</h1>
-			<h1 class="text-[9vw] lg:text-7xl font-bold">I'm Thompson</h1>
-			<p class="font-light text-gray-600 text-right">Yes, that's my first name. Weird right?</p>
+		<div class="w-fit space-y-2">
+			<h1 class="text-2xl lg:text-5xl">Hey,</h1>
+			<h1 class="text-[9vw] lg:text-[4vw] font-bold whitespace-nowrap">I'm Thompson</h1>
+			<p class="font-light text-gray-400">Cloud/Systems Engineer and Developer</p>
 		</div>
 
 		<div class="space-y-4">
@@ -35,5 +35,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="lg:grid place-items-center bg-gray-900 hidden">Hero Image</div>
+	<div class="lg:grid place-items-center bg-gray-900 hidden font-bold rounded-xl">Hero Image</div>
 </section>
