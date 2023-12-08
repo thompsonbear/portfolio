@@ -14,7 +14,34 @@
 	onMount(() => {
 		quick_links = nav_links;
 	});
+
+	interface Project {
+		title: string;
+		description: string;
+		tags: string[];
+		href: string;
+	}
+
+	let projects: Project[] = [
+		{
+			title: 'Auction Koi',
+			description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
+			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
+			href: 'https://auctionkoi.com'
+		},
+		{
+			title: 'Dainichi USA',
+			description:
+				'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
+			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
+			href: 'https://dainichiusa.com'
+		}
+	];
+
+	let scrollY: number = 0;
 </script>
+
+<svelte:window bind:scrollY />
 
 <section id="home" class="flex flex-col">
 	<div class="grid lg:grid-cols-2 gap-4 h-[calc(80vh-2rem)]">
@@ -54,23 +81,85 @@
 			Hero Image
 		</div>
 	</div>
-	<div class="flex justify-center items-center h-[calc(20vh-2rem)]">
+	<div
+		class="flex justify-center items-center overflow-clip h-[calc(20vh-2rem)] {scrollY == 0 ||
+			'opacity-0'} duration-1000"
+	>
 		<a
 			on:click|preventDefault={(e) => scrollIntoView(e)}
 			href="#work"
-			class="flex justify-center group w-fit hover:scale-110 transition-all duration-300"
+			class="flex items-center text-gray-400 flex-col gap-2 group"
 		>
-			<iconify-icon
-				class="animate-bounce pointer-events-none text-gray-300 group-hover:text-blue-400 text-4xl pt-4 px-4 pb-2"
-				icon="bi:arrow-down-circle-fill"
-			/>
+			<span class="group-hover:text-blue-500 duration-300 pointer-events-none">Scroll</span>
+			<div
+				class="h-14 w-6 border border-gray-700 rounded-full flex justify-center relative overflow-clip pointer-events-none"
+			>
+				<span
+					class="h-14 pointer-events-none scroll w-6 bg-gray-500 group-hover:bg-blue-500 duration-300 absolute bottom-0 lg:top-0 lg:rounded-b-full left-0 rounded-t-full"
+				/>
+			</div>
 		</a>
 	</div>
 </section>
 
-<section
-	id="work"
-	class="border-gray-900 h-screen grid place-items-center font-bold rounded-xl border-2"
->
-	Work
+<section id="work">
+	<div class="h-screen pt-8">
+		<div class="py-12 flex gap-2 sm:flex-row flex-col justify-between sm:items-center">
+			<h1 class="text-2xl font-bold">Recent Projects</h1>
+			<a
+				href="/projects"
+				class="flex gap-2 items-center text-gray-400 hover:text-gray-300 duration-300"
+			>
+				All Projects
+				<iconify-icon icon="mdi:chevron-double-right" height="1.5rem" />
+			</a>
+		</div>
+		<div
+			class="flex flex-nowrap lg:grid gap-4 md:grid-cols-2 w-full overflow-scroll snap-x lg:snap-none lg:overflow-auto hide-scroll-bar"
+		>
+			{#each projects as project}
+				<div class="w-full snap-center">
+					<a
+						class="flex flex-col gap-4 border justify-between border-gray-700 rounded-md p-4 duration-300 lg:w-full w-[65vw] h-96"
+						href={project.href}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<div>
+							<h2 class="text-xl font-bold">{project.title}</h2>
+							<p class="text-gray-400">{project.description}</p>
+						</div>
+
+						<div class="flex flex-wrap gap-2 left-4 bottom-4">
+							{#each project.tags as tag}
+								<span class="border border-gray-700 text-gray-300 px-2 py-1 rounded-md text-sm">
+									{tag}
+								</span>
+							{/each}
+						</div>
+					</a>
+				</div>
+			{/each}
+		</div>
+	</div>
 </section>
+
+<style>
+	.scroll {
+		animation: scroll 3s infinite;
+	}
+
+	@keyframes scroll {
+		0% {
+			height: 0;
+		}
+		50% {
+			opacity: 1;
+			height: 100%;
+		}
+		100% {
+			opacity: 0;
+			height: 100%;
+		}
+	}
+</style>

@@ -19,7 +19,7 @@
 
 <div class="w-full flex flex-col items-center">
 	<Header {nav_links} />
-	<div class=" flex flex-col w-full px-12 relative">
+	<div class=" flex flex-col w-full lg:px-12 px-8 relative">
 		<div
 			class="fixed top-12 -left-12 rounded-full bg-blue-300 w-[80vw] lg:w-[45vw] aspect-square -z-50 blur-3xl opacity-10"
 		/>
