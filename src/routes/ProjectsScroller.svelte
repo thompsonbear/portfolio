@@ -6,9 +6,11 @@
 	class="hide-scroll-bar absolute left-0 flex w-screen snap-x grid-cols-2 flex-nowrap gap-6 overflow-auto lg:relative lg:grid lg:w-full lg:snap-none lg:overflow-auto"
 >
 	{#each projects as project}
-		<div class="space-y-4">
+		<div
+			class="snap-start scroll-me-16 scroll-ms-8 space-y-4 first:ml-8 last:mr-16 lg:w-full lg:first:ml-0 lg:last:mr-0"
+		>
 			<div
-				class="flex w-[80vw] flex-shrink-0 snap-center flex-col gap-8 rounded-md border bg-blue-600 bg-opacity-10 p-4 backdrop-blur-xl first:ml-8 last:mr-8 lg:w-full lg:first:ml-0 lg:last:mr-0"
+				class="flex w-[80vw] flex-shrink-0 flex-col gap-8 rounded-md border bg-blue-600 bg-opacity-10 p-4 backdrop-blur-xl lg:w-full"
 			>
 				<div class="flex flex-col gap-4">
 					<div class="flex items-center justify-between">
