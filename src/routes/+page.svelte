@@ -76,7 +76,7 @@
 		</div>
 	</div>
 	<div
-		class="fixed bottom-20 left-0 z-20 flex w-full items-center justify-center {scrollY <= 100 ||
+		class="absolute bottom-20 left-0 z-20 flex w-full items-center justify-center {scrollY <= 100 ||
 			'opacity-0'} duration-1000"
 	>
 		<a
