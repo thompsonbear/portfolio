@@ -25,15 +25,16 @@
 </script>
 
 <T.PerspectiveCamera makeDefault position={[-0.8, 0.7, 3.5]} lookAt.y={0} />
+<T.AmbientLight intensity={0.3} />
 <T.DirectionalLight intensity={1} position={[0, 0, 5]} />
 
 <T.Mesh position.y={1} rotation.y={rotation.y} rotation.x={rotation.x}>
 	<T.OctahedronGeometry args={[1, 2, 1]} />
-	<T.MeshBasicMaterial wireframe color="white" transparent opacity={0.5 - scrollPercent / 5} />
+	<T.MeshBasicMaterial wireframe color="#60a5fa" transparent opacity={0.5 - scrollPercent / 5} />
 	<T.Points>
 		<T.OctahedronGeometry args={[1, 2, 1]} />
 		<T.PointsMaterial
-			color="white"
+			color="#bfdbfe"
 			size={0.02 + scrollPercent / 50}
 			transparent
 			opacity={0.5 - scrollPercent / 5}

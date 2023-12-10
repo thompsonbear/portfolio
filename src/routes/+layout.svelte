@@ -9,6 +9,7 @@
 	let scrollY: number;
 
 	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
@@ -35,11 +36,11 @@
 
 <div class="fixed -z-50 h-screen w-screen">
 	<Canvas>
-		<Scene {scrollY} scrollYMax={bodyHeight / 2} />
+		<Scene {scrollY} />
 	</Canvas>
 </div>
 
-<div class="flex w-full flex-col items-center">
+<div class="relative flex w-full flex-col items-center">
 	<Header {nav_links} />
 	<div
 		class="fixed -left-12 top-12 -z-50 aspect-square w-[80vw] rounded-full bg-blue-300 opacity-10 blur-3xl lg:w-[45vw]"
@@ -50,4 +51,5 @@
 	<div class="relative flex w-full max-w-[2000px] flex-col px-8 lg:px-12">
 		<slot />
 	</div>
+	<Footer />
 </div>

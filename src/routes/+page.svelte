@@ -22,14 +22,16 @@
 			title: 'Auction Koi',
 			description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
 			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-			href: 'https://auctionkoi.com'
+			href: 'https://auctionkoi.com',
+			image_url: '/images/projects/auctionkoi/preview.gif'
 		},
 		{
 			title: 'Dainichi USA',
 			description:
 				'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
 			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-			href: 'https://dainichiusa.com'
+			href: 'https://dainichiusa.com',
+			image_url: '/images/projects/dainichiusa/preview.gif'
 		}
 	];
 
@@ -96,7 +98,7 @@
 	</div>
 </section>
 
-<section id="work" class="h-screen pt-16">
+<section id="work" class="h-screen py-16">
 	<div class="flex flex-col justify-between gap-2 py-12 sm:flex-row sm:items-center">
 		<h1 class="text-2xl font-bold">Recent Projects</h1>
 		<a

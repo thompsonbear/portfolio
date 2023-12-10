@@ -9,4 +9,5 @@ interface Project {
     description: string;
     tags: string[];
     href: string;
+    image_url: string;
 }

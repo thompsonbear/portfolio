@@ -9,11 +9,11 @@ const nav_links: NavLink[] = [
         text: 'Resume',
         href: '/resume'
     },
-    {
-        icon: 'mdi:post',
-        text: 'Blog',
-        href: '/blog'
-    },
+    // {
+    //     icon: 'mdi:post',
+    //     text: 'Blog',
+    //     href: '/blog'
+    // },
     {
         icon: 'mdi:email-variant',
         text: 'Contact',
