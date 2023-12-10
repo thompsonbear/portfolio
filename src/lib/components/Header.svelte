@@ -10,7 +10,7 @@
 	class="flex justify-center h-16 sticky top-0 left-0 backdrop-blur-md w-full z-20 border-b {scrollY !=
 		0 || 'border-opacity-0'} border-gray-800 duration-300 transition-all"
 >
-	<div class="flex justify-between items-center w-full px-12">
+	<div class="flex justify-between items-center w-full px-8 sm:px-12">
 		<a
 			href="/"
 			class="font-semibold text-gray-100 tracking-wide hover:opacity-100 opacity-80 duration-300"

@@ -3,6 +3,8 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
+	import ProjectsScroller from './ProjectsScroller.svelte';
+
 	const { nav_links } = data;
 
 	import { quartInOut } from 'svelte/easing';
@@ -14,13 +16,6 @@
 	onMount(() => {
 		quick_links = nav_links;
 	});
-
-	interface Project {
-		title: string;
-		description: string;
-		tags: string[];
-		href: string;
-	}
 
 	let projects: Project[] = [
 		{
@@ -44,14 +39,14 @@
 <svelte:window bind:scrollY />
 
 <section id="home" class="flex flex-col">
-	<div class="grid lg:grid-cols-2 gap-4 h-[calc(80vh-2rem)]">
+	<div class="grid h-[calc(80vh-2rem)] gap-4 lg:grid-cols-2">
 		<div class="flex flex-col justify-around">
 			<div>
 				<h1 class="text-2xl lg:text-5xl">Hey,</h1>
 
 				<div>
-					<h1 class="text-[9vw] lg:text-[4vw] font-bold whitespace-nowrap">I'm Thompson</h1>
-					<p class="font-light text-gray-400 xl:text-2xl sm:text-base text-sm">
+					<h1 class="whitespace-nowrap text-[9vw] font-bold lg:text-[4vw]">I'm Thompson</h1>
+					<p class="text-sm font-light text-gray-400 sm:text-base xl:text-2xl">
 						Cloud/Systems Engineer and Developer
 					</p>
 				</div>
@@ -59,7 +54,7 @@
 				<a
 					on:click|preventDefault={(e) => scrollIntoView(e)}
 					href="#work"
-					class="bg-blue-600 py-3 px-8 sm:w-fit w-full text-xl font-medium rounded-md grid place-items-center my-12 hover:bg-blue-500 duration-300"
+					class="my-12 grid w-full place-items-center rounded-md bg-blue-600 px-8 py-3 text-xl font-medium duration-300 hover:bg-blue-500 sm:w-fit"
 					>See Work</a
 				>
 			</div>
@@ -70,78 +65,47 @@
 					{#each quick_links as link, i}
 						<a
 							in:fly|global={{ x: 100, duration: 600, delay: i * 50, easing: quartInOut }}
-							class="font-bold flex gap-2 px-3 py-2 h-fit justify-between items-center text-gray-300 tracking-wide rounded-md border border-gray-700 hover:bg-gray-700 hover:text-gray-200 duration-300"
+							class="flex h-fit items-center justify-between gap-2 rounded-md border border-gray-700 px-3 py-2 font-bold tracking-wide text-gray-300 backdrop-blur-xl duration-300 hover:bg-gray-700 hover:text-gray-200"
 							href={link.href}><iconify-icon icon={link.icon} />{link.text}</a
 						>
 					{/each}
 				</div>
 			</div>
 		</div>
-		<div class="lg:grid place-items-center border-2 border-gray-900 hidden font-bold rounded-xl">
-			Hero Image
-		</div>
 	</div>
 	<div
-		class="flex justify-center items-center overflow-clip h-[calc(20vh-2rem)] {scrollY == 0 ||
+		class="flex h-[calc(20vh-2rem)] items-center justify-center overflow-clip {scrollY == 0 ||
 			'opacity-0'} duration-1000"
 	>
 		<a
 			on:click|preventDefault={(e) => scrollIntoView(e)}
 			href="#work"
-			class="flex items-center text-gray-400 flex-col gap-2 group"
+			class="group flex flex-col items-center gap-2 text-gray-400"
 		>
-			<span class="group-hover:text-blue-500 duration-300 pointer-events-none">Scroll</span>
+			<span class="pointer-events-none duration-300 group-hover:text-blue-500">Scroll</span>
 			<div
-				class="h-14 w-6 border border-gray-700 rounded-full flex justify-center relative overflow-clip pointer-events-none"
+				class="pointer-events-none relative flex h-14 w-6 justify-center overflow-clip rounded-full border border-gray-700"
 			>
 				<span
-					class="h-14 pointer-events-none scroll w-6 bg-gray-500 group-hover:bg-blue-500 duration-300 absolute bottom-0 lg:top-0 lg:rounded-b-full left-0 rounded-t-full"
+					class="scroll pointer-events-none absolute bottom-0 left-0 h-14 w-6 rounded-t-full bg-gray-500 duration-300 group-hover:bg-blue-500 lg:top-0 lg:rounded-b-full"
 				/>
 			</div>
 		</a>
 	</div>
 </section>
 
-<section id="work">
-	<div class="h-screen pt-8">
-		<div class="py-12 flex gap-2 sm:flex-row flex-col justify-between sm:items-center">
-			<h1 class="text-2xl font-bold">Recent Projects</h1>
-			<a
-				href="/projects"
-				class="flex gap-2 items-center text-gray-400 hover:text-gray-300 duration-300"
-			>
-				All Projects
-				<iconify-icon icon="mdi:chevron-double-right" height="1.5rem" />
-			</a>
-		</div>
-		<div
-			class="flex flex-nowrap lg:grid gap-4 md:grid-cols-2 w-full overflow-scroll snap-x lg:snap-none lg:overflow-auto hide-scroll-bar"
+<section id="work" class="h-screen pt-16">
+	<div class="flex flex-col justify-between gap-2 py-12 sm:flex-row sm:items-center">
+		<h1 class="text-2xl font-bold">Recent Projects</h1>
+		<a
+			href="/projects"
+			class="flex items-center gap-2 text-gray-400 duration-300 hover:text-gray-300"
 		>
-			{#each projects as project}
-				<div class="w-full snap-center">
-					<a
-						class="flex flex-col gap-4 border justify-between border-gray-700 rounded-md p-4 duration-300 lg:w-full w-[65vw] h-96"
-						href={project.href}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<div>
-							<h2 class="text-xl font-bold">{project.title}</h2>
-							<p class="text-gray-400">{project.description}</p>
-						</div>
-
-						<div class="flex flex-wrap gap-2 left-4 bottom-4">
-							{#each project.tags as tag}
-								<span class="border border-gray-700 text-gray-300 px-2 py-1 rounded-md text-sm">
-									{tag}
-								</span>
-							{/each}
-						</div>
-					</a>
-				</div>
-			{/each}
-		</div>
+			All Projects
+			<iconify-icon icon="mdi:chevron-double-right" height="1.5rem" />
+		</a>
 	</div>
+	<ProjectsScroller {projects} />
 </section>
 
 <style>

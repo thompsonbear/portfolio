@@ -9,23 +9,47 @@
 	let scrollY: number;
 
 	import Header from '$lib/components/Header.svelte';
+
+	import { Canvas } from '@threlte/core';
+	import Scene from './Scene.svelte';
+
+	let body: HTMLElement;
+	let bodyHeight: number;
+
+	function setBodyHeight() {
+		setTimeout(() => {
+			bodyHeight = body.scrollHeight;
+		}, 1000);
+	}
+
+	function setBody(node: HTMLElement) {
+		body = node;
+		setBodyHeight();
+	}
 </script>
 
 <svelte:head>
 	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </svelte:head>
 
-<svelte:window bind:scrollY />
+<svelte:body use:setBody />
+<svelte:window bind:scrollY on:resize={setBodyHeight} />
 
-<div class="w-full flex flex-col items-center">
+<div class="fixed -z-50 h-screen w-screen">
+	<Canvas>
+		<Scene {scrollY} scrollYMax={bodyHeight / 2} />
+	</Canvas>
+</div>
+
+<div class="flex w-full flex-col items-center">
 	<Header {nav_links} />
-	<div class=" flex flex-col w-full lg:px-12 px-8 relative">
-		<div
-			class="fixed top-12 -left-12 rounded-full bg-blue-300 w-[80vw] lg:w-[45vw] aspect-square -z-50 blur-3xl opacity-10"
-		/>
-		<div
-			class="fixed bottom-12 -right-12 rounded-full bg-blue-100 w-[60vw] lg:w-[35vw] aspect-square -z-50 blur-3xl opacity-5"
-		/>
+	<div
+		class="fixed -left-12 top-12 -z-50 aspect-square w-[80vw] rounded-full bg-blue-300 opacity-10 blur-3xl lg:w-[45vw]"
+	/>
+	<div
+		class="fixed -right-12 bottom-12 -z-50 aspect-square w-[60vw] rounded-full bg-blue-100 opacity-5 blur-3xl lg:w-[35vw]"
+	/>
+	<div class=" relative flex w-full max-w-[2000px] flex-col px-8 lg:px-12">
 		<slot />
 	</div>
 </div>
