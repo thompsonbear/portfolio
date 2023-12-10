@@ -25,7 +25,6 @@
 </script>
 
 <T.PerspectiveCamera makeDefault position={[-0.8, 0.7, 3.5]} lookAt.y={0} />
-<T.AmbientLight intensity={0.5} />
 <T.DirectionalLight intensity={1} position={[0, 0, 5]} />
 
 <T.Mesh position.y={1} rotation.y={rotation.y} rotation.x={rotation.x}>

@@ -35,11 +35,11 @@
 <svelte:body use:setBody />
 <svelte:window bind:scrollY on:resize={setBodyHeight} />
 
-<div class="fixed -z-50 h-screen w-screen">
+<!-- <div class="fixed -z-50 h-screen w-screen">
 	<Canvas>
 		<Scene {scrollY} scrollYMax={bodyHeight / 2} />
 	</Canvas>
-</div>
+</div> -->
 
 <div class="flex w-full flex-col items-center">
 	<Header {nav_links} />
