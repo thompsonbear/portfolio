@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let scrollY: number = 0;
-	export let scrollYMax: number;
+	export let scrollYMax: number = 1000;
 	import { T, useTask } from '@threlte/core';
 
 	let rotation = {

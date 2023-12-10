@@ -38,15 +38,17 @@
 
 <svelte:window bind:scrollY />
 
-<section id="home" class="flex flex-col">
+<section id="home" class="relative flex h-[calc(100vh-4rem)] flex-col">
 	<div class="grid h-[calc(80vh-2rem)] gap-4 lg:grid-cols-2">
 		<div class="flex flex-col justify-around">
 			<div>
 				<h1 class="text-2xl lg:text-5xl">Hey,</h1>
 
 				<div>
-					<h1 class="whitespace-nowrap text-[9vw] font-bold lg:text-[4vw]">I'm Thompson</h1>
-					<p class="text-sm font-light text-gray-400 sm:text-base xl:text-2xl">
+					<h1 class="whitespace-nowrap text-[9.5vw] font-bold lg:text-[4vw]">I'm Thompson</h1>
+					<p
+						class="text w-fit rounded-md border border-gray-600 bg-gray-600 bg-opacity-30 px-1.5 py-0.5 text-gray-400 backdrop-blur-xl sm:text-base xl:text-2xl"
+					>
 						Cloud/Systems Engineer and Developer
 					</p>
 				</div>
@@ -74,7 +76,7 @@
 		</div>
 	</div>
 	<div
-		class="flex h-[calc(20vh-2rem)] items-center justify-center overflow-clip {scrollY == 0 ||
+		class="fixed bottom-20 left-0 z-20 flex w-full items-center justify-center {scrollY <= 100 ||
 			'opacity-0'} duration-1000"
 	>
 		<a
