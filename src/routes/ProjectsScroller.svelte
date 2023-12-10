@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="hide-scroll-bar absolute left-0 flex w-screen snap-x flex-nowrap gap-4 overflow-scroll md:grid-cols-2 lg:relative lg:grid lg:w-full lg:snap-none lg:overflow-auto"
+	class="hide-scroll-bar absolute left-0 flex w-screen snap-x grid-cols-2 flex-nowrap gap-4 overflow-auto lg:relative lg:grid lg:w-full lg:snap-none lg:overflow-auto"
 >
 	{#each projects as project}
 		<div class="w-full snap-center first:ml-8 last:mr-8 lg:first:ml-0 lg:last:mr-0">

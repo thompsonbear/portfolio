@@ -49,7 +49,7 @@
 	<div
 		class="fixed -right-12 bottom-12 -z-50 aspect-square w-[60vw] rounded-full bg-blue-100 opacity-5 blur-3xl lg:w-[35vw]"
 	/>
-	<div class=" relative flex w-full max-w-[2000px] flex-col px-8 lg:px-12">
+	<div class="relative flex w-full max-w-[2000px] flex-col px-8 lg:px-12">
 		<slot />
 	</div>
 </div>

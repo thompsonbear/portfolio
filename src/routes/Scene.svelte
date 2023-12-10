@@ -29,10 +29,10 @@
 <T.DirectionalLight intensity={1} position={[0, 0, 5]} />
 
 <T.Mesh position.y={1} rotation.y={rotation.y} rotation.x={rotation.x}>
-	<T.OctahedronGeometry args={[1, 3, 1]} />
+	<T.OctahedronGeometry args={[1, 2, 1]} />
 	<T.MeshBasicMaterial wireframe color="white" transparent opacity={0.5 - scrollPercent / 5} />
 	<T.Points>
-		<T.OctahedronGeometry args={[1, 3, 1]} />
+		<T.OctahedronGeometry args={[1, 2, 1]} />
 		<T.PointsMaterial
 			color="white"
 			size={0.02 + scrollPercent / 50}
@@ -43,6 +43,6 @@
 </T.Mesh>
 
 <T.Mesh position.y={1} rotation.y={rotation.y} rotation.x={rotation.x}>
-	<T.OctahedronGeometry args={[1, 3, 1]} />
+	<T.OctahedronGeometry args={[1, 2, 1]} />
 	<T.MeshStandardMaterial color="#2563eb" transparent opacity={0.8 - scrollPercent} />
 </T.Mesh>
