@@ -77,14 +77,12 @@
 			</div>
 		</div>
 	</div>
-	<div
-		class="absolute bottom-20 left-0 z-20 flex w-full items-center justify-center {scrollY <= 100 ||
-			'opacity-0'} duration-1000"
-	>
+	<div class="absolute bottom-20 left-0 z-20 flex w-full items-center justify-center">
 		<a
 			on:click|preventDefault={(e) => scrollIntoView(e)}
 			href="#work"
-			class="group flex flex-col items-center gap-2 text-gray-400"
+			class="group flex flex-col items-center gap-2 text-gray-400 {scrollY <= 100 ||
+				'opacity-0'} duration-1000"
 		>
 			<span class="pointer-events-none duration-300 group-hover:text-blue-500">Scroll</span>
 			<div

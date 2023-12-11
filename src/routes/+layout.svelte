@@ -4,7 +4,7 @@
 
 	export let data: PageData;
 
-	const { nav_links } = data;
+	const { nav_links, social_links } = data;
 
 	let scrollY: number;
 
@@ -41,7 +41,7 @@
 </div>
 
 <div class="relative flex w-full flex-col items-center">
-	<Header {nav_links} />
+	<Header {nav_links} {social_links} />
 	<div
 		class="fixed -left-12 top-12 -z-50 aspect-square w-[80vw] rounded-full bg-blue-300 opacity-10 blur-3xl lg:w-[45vw]"
 	/>
@@ -51,5 +51,5 @@
 	<div class="relative flex w-full max-w-[2000px] flex-col overflow-x-clip px-8 lg:px-12">
 		<slot />
 	</div>
-	<Footer />
+	<Footer {nav_links} {social_links} />
 </div>

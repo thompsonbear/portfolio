@@ -2,27 +2,36 @@ const nav_links: NavLink[] = [
     {
         icon: 'mdi:web',
         text: 'Projects',
-        href: '/projects'
+        href: '#work'
     },
     {
         icon: 'mdi:text-box',
         text: 'Resume',
-        href: '/resume'
+        href: '#resume'
     },
-    // {
-    //     icon: 'mdi:post',
-    //     text: 'Blog',
-    //     href: '/blog'
-    // },
     {
         icon: 'mdi:email-variant',
         text: 'Contact',
-        href: '/contact'
+        href: '#contact'
     }
+];
+
+const social_links: NavLink[] = [
+    {
+        icon: 'mdi:linkedin',
+        text: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/thompsonbear/'
+    },
+    {
+        icon: 'mdi:github',
+        text: 'GitHub',
+        href: 'https://github.com/thompsonbear/'
+    },
 ];
 
 export const load = async () => {
     return {
-        nav_links
+        nav_links,
+        social_links
     }
 }
