@@ -3,7 +3,9 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	import ProjectsScroller from './ProjectsScroller.svelte';
+	import ScaleGrid from '$lib/components/scalegrid/ScaleGrid.svelte';
+	import ScaleGridRow from '$lib/components/scalegrid/ScaleGridRow.svelte';
+	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
 
 	const { nav_links } = data;
 
@@ -96,7 +98,7 @@
 	</div>
 </section>
 
-<section id="work" class="h-screen py-16">
+<!-- <section id="work" class="h-screen py-16">
 	<div class="flex flex-col justify-between gap-2 py-12 sm:flex-row sm:items-center">
 		<h1 class="text-2xl font-bold">Recent Projects</h1>
 		<a
@@ -108,7 +110,15 @@
 		</a>
 	</div>
 	<ProjectsScroller {projects} />
-</section>
+</section> -->
+
+<ScaleGrid>
+	<div class="h-full w-full rounded-lg border"></div>
+	<div class="h-full w-full rounded-lg border"></div>
+	<div class="h-full w-full rounded-lg border"></div>
+	<div class="h-full w-full rounded-lg border"></div>
+	<div class="h-full w-full rounded-lg border"></div>
+</ScaleGrid>
 
 <style>
 	.scroll {
