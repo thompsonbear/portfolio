@@ -14,5 +14,6 @@ interface Project {
     description: string;
     tags: string[];
     href: string;
+    github?: string;
     image_url: string;
 }

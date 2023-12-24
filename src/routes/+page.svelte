@@ -5,6 +5,7 @@
 
 	import ScaleGrid from '$lib/components/scalegrid/ScaleGrid.svelte';
 	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
 	const { nav_links } = data;
 
@@ -19,6 +20,14 @@
 	});
 
 	let projects: Project[] = [
+		{
+			title: 'Thomposon Bear Portfolio',
+			description: 'You are here!',
+			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Vercel'],
+			href: 'https://thompsonbear.com',
+			github: 'https://github.com/thompsonbear/portfolio',
+			image_url: '/images/projects/auctionkoi/preview.gif'
+		},
 		{
 			title: 'Auction Koi',
 			description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
@@ -97,29 +106,19 @@
 	</div>
 </section>
 
-<!-- <section id="work" class="h-screen py-16">
-	<div class="flex flex-col justify-between gap-2 py-12 sm:flex-row sm:items-center">
-		<h1 class="text-2xl font-bold">Recent Projects</h1>
-		<a
-			href="/projects"
-			class="flex items-center gap-2 text-gray-400 duration-300 hover:text-gray-300"
-		>
-			All Projects
-			<iconify-icon icon="mdi:chevron-double-right" height="1.5rem" />
-		</a>
-	</div>
-	<ProjectsScroller {projects} />
-</section> -->
+<section id="work">
+	<h1 class="mb-4 text-2xl">Recent Work</h1>
 
-<div class="grid h-[50rem] gap-4">
-	<ScaleGrid cols={2} rows={2}>
-		{#each Array(4) as _}
-			<ScaleGridItem>
-				<div class="h-full w-full rounded-lg bg-gray-400"></div>
-			</ScaleGridItem>
-		{/each}
-	</ScaleGrid>
-</div>
+	<div class="grid h-[20rem] max-w-[70rem] gap-4">
+		<ScaleGrid cols={3} rows={1}>
+			{#each projects as project}
+				<ScaleGridItem>
+					<ProjectCard {project} />
+				</ScaleGridItem>
+			{/each}
+		</ScaleGrid>
+	</div>
+</section>
 
 <style>
 	.scroll {

@@ -8,7 +8,7 @@
 <svelte:window bind:scrollY />
 
 <header
-	class="sticky left-0 top-0 z-20 flex h-16 w-full justify-center border-b bg-gray-900 bg-opacity-40 backdrop-blur-md {scrollY !=
+	class="sticky left-0 top-0 z-20 flex h-16 w-full justify-center border-b backdrop-blur-md {scrollY !=
 		0 || 'border-opacity-0'} border-gray-800 transition-all duration-300"
 >
 	<div class="flex w-full items-center justify-between px-8 sm:px-12">
