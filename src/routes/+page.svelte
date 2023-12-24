@@ -4,7 +4,6 @@
 	export let data: PageData;
 
 	import ScaleGrid from '$lib/components/scalegrid/ScaleGrid.svelte';
-	import ScaleGridRow from '$lib/components/scalegrid/ScaleGridRow.svelte';
 	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
 
 	const { nav_links } = data;
@@ -112,13 +111,15 @@
 	<ProjectsScroller {projects} />
 </section> -->
 
-<ScaleGrid>
-	<div class="h-full w-full rounded-lg border"></div>
-	<div class="h-full w-full rounded-lg border"></div>
-	<div class="h-full w-full rounded-lg border"></div>
-	<div class="h-full w-full rounded-lg border"></div>
-	<div class="h-full w-full rounded-lg border"></div>
-</ScaleGrid>
+<div class="grid h-[50rem] gap-4">
+	<ScaleGrid cols={2} rows={2}>
+		{#each Array(4) as _}
+			<ScaleGridItem>
+				<div class="h-full w-full rounded-lg bg-gray-400"></div>
+			</ScaleGridItem>
+		{/each}
+	</ScaleGrid>
+</div>
 
 <style>
 	.scroll {

@@ -4,6 +4,11 @@ interface NavLink {
     href: string;
 }
 
+interface Point {
+    x: number;
+    y: number;
+}
+
 interface Project {
     title: string;
     description: string;
