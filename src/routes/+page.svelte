@@ -13,6 +13,8 @@
 	import { fly } from 'svelte/transition';
 
 	import { scrollIntoView } from '$lib/utils/navigation';
+	import CardScroller from '$lib/components/cardscroller/CardScroller.svelte';
+	import CardScrollerItem from '$lib/components/cardscroller/CardScrollerItem.svelte';
 
 	let quick_links: NavLink[] = [];
 	onMount(() => {
@@ -47,16 +49,16 @@
 
 	function getNumCols(): number {
 		if (innerWidth > 1200) return 3;
-		if (innerWidth > 800) return 2;
+		if (innerWidth > 640) return 2;
 		return 1;
 	}
 </script>
 
 <svelte:window bind:scrollY bind:innerWidth />
 
-<section id="home" class="relative flex h-[calc(100vh-4rem)] flex-col">
-	<div class="grid h-[calc(80vh-2rem)] gap-4 lg:grid-cols-2">
-		<div class="flex flex-col justify-around">
+<section id="home" class="relative flex h-[calc(100vh-4rem)] flex-col justify-around">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<div class="flex flex-col">
 			<div>
 				<h1 class="text-2xl lg:text-5xl">Hey,</h1>
 
@@ -72,26 +74,13 @@
 				<a
 					on:click|preventDefault={(e) => scrollIntoView(e)}
 					href="#work"
-					class="my-12 grid w-full place-items-center rounded-md bg-blue-600 px-8 py-3 text-xl font-medium duration-300 hover:bg-blue-500 sm:w-fit"
+					class="my-12 grid w-fit place-items-center rounded-md bg-blue-600 px-8 py-3 text-xl font-medium duration-300 hover:bg-blue-500"
 					>See Work</a
 				>
 			</div>
-
-			<div class="space-y-4">
-				<h2 class="text-lg text-gray-300">Skipping Around?</h2>
-				<div class="flex flex-wrap gap-3">
-					{#each quick_links as link, i}
-						<a
-							in:fly|global={{ x: 100, duration: 600, delay: i * 50, easing: quartInOut }}
-							class="flex h-fit items-center justify-between gap-2 rounded-md border border-gray-700 px-3 py-2 font-bold tracking-wide text-gray-300 backdrop-blur-xl duration-300 hover:bg-gray-700 hover:text-gray-200"
-							href={link.href}><iconify-icon icon={link.icon} />{link.text}</a
-						>
-					{/each}
-				</div>
-			</div>
 		</div>
 	</div>
-	<div class="absolute bottom-20 left-0 z-20 flex w-full items-center justify-center">
+	<div class="z-20 flex w-full items-center justify-center">
 		<a
 			on:click|preventDefault={(e) => scrollIntoView(e)}
 			href="#work"
@@ -115,15 +104,29 @@
 <section id="work">
 	<h1 class="mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
 
-	{#key innerWidth}
-		<ScaleGrid cols={getNumCols()} item_min_height="20rem">
+	<div class="hidden w-full max-w-6xl sm:block">
+		{#key innerWidth}
+			<ScaleGrid cols={getNumCols()} item_min_height="20rem">
+				{#each projects as project}
+					<ScaleGridItem>
+						<ProjectCard {project} />
+					</ScaleGridItem>
+				{/each}
+			</ScaleGrid>
+		{/key}
+	</div>
+
+	<div class="block aspect-video w-full sm:hidden">
+		<CardScroller>
 			{#each projects as project}
-				<ScaleGridItem>
-					<ProjectCard {project} />
-				</ScaleGridItem>
+				<CardScrollerItem>
+					<div class="aspect-video w-[calc(100vw-4rem)]">
+						<ProjectCard {project} />
+					</div>
+				</CardScrollerItem>
 			{/each}
-		</ScaleGrid>
-	{/key}
+		</CardScroller>
+	</div>
 </section>
 
 <style>
