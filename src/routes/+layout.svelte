@@ -9,7 +9,7 @@
 	let scrollY: number;
 
 	import Header from '$lib/components/Header.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import Footer from '$lib/components/layout/footer/Footer.svelte';
 
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';

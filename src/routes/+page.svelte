@@ -99,8 +99,6 @@
 	</div>
 </section>
 
-<div class="h-8"></div>
-
 <section id="work">
 	<h1 class="mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
 
