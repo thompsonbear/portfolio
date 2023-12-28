@@ -116,11 +116,11 @@
 		{/key}
 	</div>
 
-	<div class="block aspect-video w-full sm:hidden">
+	<div class="block h-80 w-full sm:hidden">
 		<CardScroller>
 			{#each projects as project}
 				<CardScrollerItem>
-					<div class="aspect-video w-[calc(100vw-4rem)]">
+					<div class="h-80 w-[calc(100vw-4rem)]">
 						<ProjectCard {project} />
 					</div>
 				</CardScrollerItem>
