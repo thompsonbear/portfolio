@@ -1,37 +1,33 @@
 <script lang="ts">
 	export let cols: number = 3;
-	export let rows: number = 2;
+	export let item_min_height: string = '20rem';
 
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
-	const active = writable<number | undefined>(undefined);
+	import { multiplyCSSUnit } from '$lib/utils/helpers';
+
+	const active = writable<Point | undefined>(undefined);
 
 	setContext('active', active);
 
-	// Count the number of Scale Grid Items
+	// Count the number of ScaleGridItem(s) in ScaleGrid
 	let item_count = writable(0);
 	item_count.subscribe(() => {
 		setContext('item_count', {
 			add() {
 				$item_count++;
-				if ($item_count > cols * rows) $item_count = 1; // reset count if it exceeds the number of items
 
-				return $item_count;
+				// return the index of the item as a point/coordinate to the item for reference
+				return {
+					x: ($item_count - 1) % cols,
+					y: Math.floor(($item_count - 1) / cols)
+				};
 			}
 		});
 	});
 
-	let grid_style: string = set_grid_template($active);
-	$: $active, (grid_style = set_grid_template($active));
-
-	function index_to_point(index: number | undefined): Point | undefined {
-		if (index === undefined) return undefined;
-		return {
-			x: (index - 1) % cols,
-			y: Math.floor((index - 1) / cols)
-		};
-	}
+	let grid_style: string;
 
 	function generate_template_text(n: number, active: number | undefined = undefined) {
 		return Array(n)
@@ -40,20 +36,27 @@
 			.join(' ');
 	}
 
-	// generate styles for grid based on columns and rows
-	function set_grid_template(active: number | undefined): string {
-		let active_point = index_to_point(active);
-		let coltext = generate_template_text(cols, active_point?.x);
-		let rowtext = generate_template_text(rows, active_point?.y);
+	function set_grid_template(active: Point | undefined, rows: number): string {
+		let coltext = generate_template_text(cols, active?.x);
+		let rowtext = generate_template_text(rows, active?.y);
 
-		return `grid-template-columns: ${coltext}; grid-template-rows: ${rowtext};`;
+		return `grid-template-columns: ${coltext}; grid-template-rows: ${rowtext}; min-height: ${multiplyCSSUnit(
+			item_min_height,
+			rows
+		)};`;
 	}
+
+	onMount(() => {
+		let rows = Math.ceil($item_count / cols);
+
+		active.subscribe((a) => (grid_style = set_grid_template(a, rows)));
+	});
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	style={grid_style}
-	class="grid h-full gap-4 duration-500"
+	class="grid h-full gap-4 duration-500 {grid_style || 'hidden'}"
 	on:mouseleave={() => active.set(undefined)}
 >
 	<slot />

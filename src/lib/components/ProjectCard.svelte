@@ -1,22 +1,46 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	export let project: Project;
 
 	import { fly, fade } from 'svelte/transition';
 
 	let overlay_visible: boolean = false;
+
+	let mounted: boolean = false;
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="h-full w-full rounded-lg border border-gray-700 bg-gray-800 bg-opacity-40 backdrop-blur-md"
+	class="h-full w-full rounded-lg border border-gray-700 bg-gray-800 backdrop-blur-md"
 	on:mouseenter={() => (overlay_visible = true)}
 	on:mouseleave={() => (overlay_visible = false)}
 >
-	<img src={project.image_url} alt="Project Video" class="h-full w-full object-cover opacity-50" />
+	{#if project?.video_url}
+		<video
+			controls
+			loop
+			muted
+			playsinline
+			class="h-full w-full object-cover"
+			src={project.video_url}
+		/>
+	{:else if project?.image_url}
+		<img src={project.image_url} alt={project.title} class="h-full w-full object-cover" />
+	{:else}
+		<div class="flex h-full w-full items-center justify-center">
+			<p class="text-gray-400">Preview coming soon.</p>
+		</div>
+	{/if}
+
 	{#if overlay_visible}
 		<div
 			in:fade={{ duration: 300 }}
-			class="absolute left-0 top-0 flex h-full w-full flex-col justify-between overflow-hidden rounded-lg bg-gray-900 bg-opacity-30 p-4"
+			class="absolute left-0 top-0 flex h-full w-full flex-col justify-between overflow-hidden rounded-lg bg-gray-900 bg-opacity-50 p-4 duration-300"
 		>
 			<header class="flex justify-between space-x-4">
 				<div>

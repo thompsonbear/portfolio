@@ -13,7 +13,8 @@ interface Project {
     title: string;
     description: string;
     tags: string[];
-    href: string;
+    href?: string;
     github?: string;
-    image_url: string;
+    image_url?: string;
+    video_url?: string;
 }

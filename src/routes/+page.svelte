@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -21,34 +21,38 @@
 
 	let projects: Project[] = [
 		{
-			title: 'Thomposon Bear Portfolio',
+			title: 'Thompson Bear Portfolio',
 			description: 'You are here!',
 			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Vercel'],
 			href: 'https://thompsonbear.com',
-			github: 'https://github.com/thompsonbear/portfolio',
-			image_url: '/images/projects/auctionkoi/preview.gif'
+			github: 'https://github.com/thompsonbear/portfolio'
 		},
 		{
 			title: 'Auction Koi',
 			description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
 			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-			href: 'https://auctionkoi.com',
-			image_url: '/images/projects/auctionkoi/preview.gif'
+			href: 'https://auctionkoi.com'
 		},
 		{
 			title: 'Dainichi USA',
 			description:
 				'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
 			tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-			href: 'https://dainichiusa.com',
-			image_url: '/images/projects/dainichiusa/preview.gif'
+			href: 'https://dainichiusa.com'
 		}
 	];
 
 	let scrollY: number = 0;
+	let innerWidth: number = 0;
+
+	function getNumCols(): number {
+		if (innerWidth > 1200) return 3;
+		if (innerWidth > 800) return 2;
+		return 1;
+	}
 </script>
 
-<svelte:window bind:scrollY />
+<svelte:window bind:scrollY bind:innerWidth />
 
 <section id="home" class="relative flex h-[calc(100vh-4rem)] flex-col">
 	<div class="grid h-[calc(80vh-2rem)] gap-4 lg:grid-cols-2">
@@ -106,18 +110,20 @@
 	</div>
 </section>
 
-<section id="work">
-	<h1 class="mb-4 text-2xl">Recent Work</h1>
+<div class="h-8"></div>
 
-	<div class="grid h-[20rem] max-w-[70rem] gap-4">
-		<ScaleGrid cols={3} rows={1}>
+<section id="work">
+	<h1 class="mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
+
+	{#key innerWidth}
+		<ScaleGrid cols={getNumCols()} item_min_height="20rem">
 			{#each projects as project}
 				<ScaleGridItem>
 					<ProjectCard {project} />
 				</ScaleGridItem>
 			{/each}
 		</ScaleGrid>
-	</div>
+	{/key}
 </section>
 
 <style>
