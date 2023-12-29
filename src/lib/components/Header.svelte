@@ -15,7 +15,7 @@
 		<a
 			href="/"
 			class="font-semibold tracking-wide text-gray-100 opacity-80 duration-300 hover:opacity-100"
-			>Thompson Bear</a
+			>Thompson Bear 🐻</a
 		>
 		<nav class="hidden items-center space-x-4 lg:flex">
 			<div class="flex gap-2">
