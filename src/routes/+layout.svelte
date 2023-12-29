@@ -34,7 +34,7 @@
 <svelte:body use:setBody />
 <svelte:window bind:scrollY on:resize={setBodyHeight} />
 
-<div class="fixed -z-50 hidden h-screen w-screen md:flex">
+<div class="fixed -z-50 hidden h-screen w-screen">
 	<Canvas>
 		<Scene {scrollY} />
 	</Canvas>
@@ -49,7 +49,7 @@
 		class="fixed -right-12 bottom-12 -z-50 aspect-square w-[60vw] rounded-full bg-blue-100 opacity-5 blur-3xl lg:w-[35vw]"
 	/>
 	<div
-		class="relative flex min-h-screen w-full max-w-[2000px] flex-col overflow-x-clip px-8 lg:px-12"
+		class="relative flex min-h-screen w-full max-w-[2000px] flex-col overflow-x-clip px-8 lg:px-16"
 	>
 		<slot />
 	</div>

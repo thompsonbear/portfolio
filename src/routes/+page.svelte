@@ -80,14 +80,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="z-20 flex w-full items-center justify-center">
+	<div class="z-20 flex w-full items-center">
 		<a
 			on:click|preventDefault={(e) => scrollIntoView(e)}
 			href="#work"
-			class="group flex flex-col items-center gap-2 text-gray-400 {scrollY <= 100 ||
+			class="group flex items-center gap-4 text-gray-400 {scrollY <= 100 ||
 				'opacity-0'} duration-1000"
 		>
-			<span class="pointer-events-none duration-300 group-hover:text-blue-500">Scroll</span>
 			<div
 				class="pointer-events-none relative flex h-14 w-6 justify-center overflow-clip rounded-full border border-gray-700"
 			>
@@ -95,6 +94,7 @@
 					class="scroll pointer-events-none absolute bottom-0 left-0 h-14 w-6 rounded-t-full bg-gray-500 duration-300 group-hover:bg-blue-500 lg:top-0 lg:rounded-b-full"
 				/>
 			</div>
+			<span class="pointer-events-none duration-300 group-hover:text-blue-500">Scroll</span>
 		</a>
 	</div>
 </section>
