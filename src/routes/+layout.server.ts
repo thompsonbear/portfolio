@@ -42,10 +42,34 @@ const contact_links: NavLink[] = [
     },
 ];
 
+let projects: Project[] = [
+    {
+        title: 'Thompson Bear Portfolio',
+        description: 'You are here!',
+        tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Vercel'],
+        href: 'https://thompsonbear.com',
+        github: 'https://github.com/thompsonbear/portfolio'
+    },
+    {
+        title: 'Auction Koi',
+        description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
+        tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
+        href: 'https://auctionkoi.com'
+    },
+    {
+        title: 'Dainichi USA',
+        description:
+            'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
+        tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
+        href: 'https://dainichiusa.com'
+    }
+];
+
 export const load = async () => {
     return {
         nav_links,
         social_links,
-        contact_links
+        contact_links,
+        projects
     }
 }
