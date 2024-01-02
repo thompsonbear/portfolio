@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -7,12 +6,8 @@
 	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 
-	const { nav_links, projects } = data;
+	const { projects } = data;
 
-	import { quartInOut } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
-
-	import { scrollIntoView } from '$lib/utils/navigation';
 	import CardScroller from '$lib/components/cardscroller/CardScroller.svelte';
 	import CardScrollerItem from '$lib/components/cardscroller/CardScrollerItem.svelte';
 	import ScrollIndicator from '$lib/components/ScrollIndicator.svelte';
