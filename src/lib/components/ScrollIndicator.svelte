@@ -5,7 +5,8 @@
 <div class="z-20 flex w-full items-center">
 	<a
 		href="#work"
-		class="group flex items-center gap-4 text-gray-400 {visible || 'opacity-0'} duration-1000"
+		class="group flex items-center gap-4 text-gray-400 {visible ||
+			'opacity-0'} pointer-events-auto duration-1000"
 	>
 		<div
 			class="pointer-events-none relative flex h-14 w-6 justify-center overflow-clip rounded-full border border-gray-700"

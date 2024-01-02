@@ -44,7 +44,7 @@ const contact_links: NavLink[] = [
     },
 ];
 
-let projects: Project[] = [
+const projects: Project[] = [
     {
         title: 'Thompson Bear Portfolio',
         description: 'You are here!',
@@ -67,8 +67,28 @@ let projects: Project[] = [
     }
 ];
 
+
+
 export const load = async () => {
+    function getContributions() { // generate random contributions for the last year
+        let contributions: Contribution[][] = [];
+        let id = 0;
+        for(let x = 0; x < 54; x++) {
+            let week: Contribution[] = [];
+            for(let y = 0; y < 7; y++) {
+                week.push({
+                    level: Math.floor(Math.random()*4) as 0 | 1 | 2 | 3 | 4,
+                    id: `${id}`
+                })
+                id++;
+            }
+            contributions.push(week)
+        }
+        return contributions;
+    }
+
     return {
+        contributions: getContributions(),
         nav_links,
         social_links,
         contact_links,

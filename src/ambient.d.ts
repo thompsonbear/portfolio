@@ -5,6 +5,12 @@ interface NavLink {
     new_tab?: boolean;
 }
 
+interface Contribution {
+    // date: Date;
+    level: 0 | 1 | 2 | 3 | 4;
+    id?: string;
+}
+
 interface Project {
     title: string;
     description: string;
