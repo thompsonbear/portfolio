@@ -7,7 +7,7 @@
 </script>
 
 <footer
-	class="mt-20 flex w-screen items-center justify-center border-t border-gray-800 py-8 backdrop-blur-md"
+	class="mt-20 flex w-full items-center justify-center border-t border-gray-800 py-8 backdrop-blur-md"
 >
 	<div class="flex w-full max-w-[2000px] flex-wrap gap-8 px-8 xs:grid-flow-col lg:px-12">
 		<img

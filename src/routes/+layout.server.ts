@@ -20,12 +20,14 @@ const social_links: NavLink[] = [
     {
         icon: 'mdi:linkedin',
         text: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/thompsonbear/'
+        href: 'https://www.linkedin.com/in/thompsonbear/',
+        new_tab: true
     },
     {
         icon: 'mdi:github',
         text: 'GitHub',
-        href: 'https://github.com/thompsonbear/'
+        href: 'https://github.com/thompsonbear/',
+        new_tab: true
     },
 ];
 
@@ -48,20 +50,20 @@ let projects: Project[] = [
         description: 'You are here!',
         tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Vercel'],
         href: 'https://thompsonbear.com',
-        github: 'https://github.com/thompsonbear/portfolio'
+        github: 'https://github.com/thompsonbear/portfolio',
     },
     {
         title: 'Auction Koi',
         description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
         tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-        href: 'https://auctionkoi.com'
+        href: 'https://auctionkoi.com',
     },
     {
         title: 'Dainichi USA',
         description:
             'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
         tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-        href: 'https://dainichiusa.com'
+        href: 'https://dainichiusa.com',
     }
 ];
 

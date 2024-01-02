@@ -2,11 +2,7 @@ interface NavLink {
     icon: string;
     text: string;
     href: string;
-}
-
-interface Point {
-    x: number;
-    y: number;
+    new_tab?: boolean;
 }
 
 interface Project {
@@ -17,4 +13,9 @@ interface Project {
     github?: string;
     image_url?: string;
     video_url?: string;
+}
+
+interface Point {
+    x: number;
+    y: number;
 }

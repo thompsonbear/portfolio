@@ -3,8 +3,8 @@
 </script>
 
 <a
-	target="_blank"
-	rel="noopener noreferrer"
+	target={nav_link?.new_tab ? '_blank' : '_self'}
+	rel={nav_link?.new_tab ? 'noopener noreferrer' : ''}
 	class="flex items-center gap-2 font-semibold tracking-wide text-gray-300 duration-300 hover:text-blue-400"
 	href={nav_link.href}
 >
