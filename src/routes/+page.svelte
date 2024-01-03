@@ -2,18 +2,20 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
+	const { projects, contributions, contribution_total } = data;
+
 	import ScaleGrid from '$lib/components/scalegrid/ScaleGrid.svelte';
 	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-
-	const { projects } = data;
-
 	import CardScroller from '$lib/components/cardscroller/CardScroller.svelte';
 	import CardScrollerItem from '$lib/components/cardscroller/CardScrollerItem.svelte';
 	import ScrollIndicator from '$lib/components/ScrollIndicator.svelte';
 
-	let scrollY: number = 0;
 	let innerWidth: number = 0;
+	let scrollY: number = 0;
+
+	import { Canvas } from '@threlte/core';
+	import Scene from './Scene.svelte';
 
 	function getNumCols(): number {
 		if (innerWidth > 1200) return 3;
@@ -22,7 +24,18 @@
 	}
 </script>
 
-<svelte:window bind:scrollY bind:innerWidth />
+<svelte:head>
+	<title>Thompson Bear</title>
+	<meta name="description" content="Thompson Bear's web development portfolio website" />
+</svelte:head>
+
+<svelte:window bind:innerWidth bind:scrollY />
+
+<div class="fixed left-0 top-0 h-screen w-screen">
+	<Canvas>
+		<Scene {contributions} {contribution_total} />
+	</Canvas>
+</div>
 
 <section
 	id="home"
@@ -52,12 +65,12 @@
 	<ScrollIndicator visible={scrollY < 100} />
 </section>
 
-<section id="work" class="mb-40 min-h-screen">
-	<h1 class="mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
+<section id="work" class="z-10 mb-40 min-h-screen">
+	<h1 class=" pointer-events-auto mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
 
-	<div class="hidden w-full max-w-6xl sm:block">
+	<div class="hidden w-full max-w-7xl sm:block">
 		{#key innerWidth}
-			<ScaleGrid cols={getNumCols()} item_min_height="20rem">
+			<ScaleGrid cols={getNumCols()} item_min_height="24rem">
 				{#each projects as project}
 					<ScaleGridItem>
 						<ProjectCard {project} />

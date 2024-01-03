@@ -79,11 +79,19 @@ export const load = async () => {
         return !res.ok ? [] : res.json()
     }
 
+    async function getContributionTotal() { // generate random contributions for the last year
+        let endpoint = new URL('/api/github/total', PUBLIC_HOST_URL)
+        const res = await fetch(endpoint)
+
+        return !res.ok ? 0 : res.json()
+    }
+
     return {
         nav_links,
         social_links,
         contact_links,
         projects,
         contributions: getContributions(),
+        contribution_total: getContributionTotal(),
     }
 }
