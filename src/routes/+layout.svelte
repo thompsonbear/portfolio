@@ -16,18 +16,6 @@
 	import Scene from './Scene.svelte';
 	import { fade } from 'svelte/transition';
 
-	let body: HTMLElement;
-	let bodyHeight: number;
-
-	function setBodyHeight() {
-		bodyHeight = body.scrollHeight;
-	}
-
-	function setBody(node: HTMLElement) {
-		body = node;
-		setBodyHeight();
-	}
-
 	function getDateString(date: string | undefined){
 		if (!date) return '';
 		const d = new Date(date);
@@ -40,8 +28,8 @@
 	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </svelte:head>
 
-<svelte:body use:setBody />
-<svelte:window bind:scrollY on:resize={setBodyHeight} />
+<svelte:body />
+<svelte:window bind:scrollY />
 
 {#if hovered_contrib}
 <div in:fade class=" text-white fixed right-4 bottom-4 p-4 rounded-lg border border-gray-400 flex flex-col" >
