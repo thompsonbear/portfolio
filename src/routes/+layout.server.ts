@@ -1,3 +1,5 @@
+import { PUBLIC_HOST_URL } from '$env/static/public'
+
 const nav_links: NavLink[] = [
     {
         icon: 'mdi:web',
@@ -70,28 +72,18 @@ const projects: Project[] = [
 
 
 export const load = async () => {
-    function getContributions() { // generate random contributions for the last year
-        let contributions: Contribution[][] = [];
-        let id = 0;
-        for(let x = 0; x < 54; x++) {
-            let week: Contribution[] = [];
-            for(let y = 0; y < 7; y++) {
-                week.push({
-                    level: Math.floor(Math.random()*4) as 0 | 1 | 2 | 3 | 4,
-                    id: `${id}`
-                })
-                id++;
-            }
-            contributions.push(week)
-        }
-        return contributions;
+    async function getContributions() { // generate random contributions for the last year
+        let endpoint = new URL('/api/github', PUBLIC_HOST_URL)
+        const res = await fetch(endpoint)
+
+        return !res.ok ? [] : res.json()
     }
 
     return {
-        contributions: getContributions(),
         nav_links,
         social_links,
         contact_links,
-        projects
+        projects,
+        contributions: getContributions(),
     }
 }

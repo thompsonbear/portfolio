@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let scrollY: number = 0;
-	export let scrollYMax: number = 1000;
 	export let contributions: Contribution[][];
+	export let hovered_contrib: Contribution | undefined = undefined;
 	import { T, useTask } from '@threlte/core';
 	import atmosphereVertex from '$lib/shaders/atmosphereVertex.glsl?raw';
 	import atmosphereFragment from '$lib/shaders/atmosphereFragment.glsl?raw';
@@ -14,24 +14,23 @@
 
 	useTask((delta) => {
 		if (pauseRotation) return;
-		zRotation += delta / 30;
+		zRotation += (delta / 30 );
 	});
 
 	$: {
 		zRotation = scrollY / 5000;
 	}
 
-	let scrollPercent = 0;
-	$: scrollPercent = scrollY / scrollYMax;
-
 	let radIncrement = (2 * Math.PI) / contributions.length;
 
 	let pauseRotation = false;
 
-	const gap: number = 0.008;
+	const gap: number = 0.005;
 
 	let active: string | undefined;
 </script>
+
+<div class="fixed top-0 right-0 bg-black h-52 w-20">test</div>
 
 <T.PerspectiveCamera makeDefault position={[-0.5, 0.85, 3]} fov={30} lookAt.y={0} />
 
@@ -52,6 +51,8 @@
 		vertexShader={atmosphereVertex}
 		blending={AdditiveBlending}
 		side={BackSide}
+		transparent
+		opacity={0.2}
 	/>
 </T.Mesh>
 
@@ -61,12 +62,12 @@
 	rotation.y={-0.4}
 	rotation.x={-1}
 	on:pointerenter={() => (pauseRotation = true)}
-	on:pointerleave={() => ((pauseRotation = false), (active = undefined))}
+	on:pointerleave={() => ((pauseRotation = false), (active = undefined), (hovered_contrib = undefined))}
 >
 	{#each contributions as weeks, j}
 		{#each weeks as day, i}
 			{#if day.level !== 0}
-				<T.Mesh position.z={day.level * gap} on:pointerenter={() => (active = day.id)}>
+				<T.Mesh position.z={day.level * gap} on:pointerenter={() => (active = day.id, hovered_contrib = day)}>
 					<T.RingGeometry
 						args={[
 							0.6 + i * 0.05 + gap,

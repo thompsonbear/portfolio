@@ -6,9 +6,10 @@ interface NavLink {
 }
 
 interface Contribution {
-    // date: Date;
     level: 0 | 1 | 2 | 3 | 4;
-    id?: string;
+    id: string;
+    count: number;
+    date?: string;
 }
 
 interface Project {
