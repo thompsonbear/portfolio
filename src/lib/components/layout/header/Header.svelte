@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let nav_links: NavLink[] = [];
 	export let social_links: NavLink[] = [];
+	export let navOpen: boolean;
 
 	let scrollY: number;
 </script>
@@ -17,8 +18,8 @@
 			class="font-semibold tracking-wide text-gray-100 opacity-80 duration-300 hover:opacity-100"
 			>Thompson Bear 🐻</a
 		>
-		<nav class="hidden items-center space-x-4 lg:flex">
-			<div class="flex gap-2">
+		<nav class="flex items-center space-x-4">
+			<div class="hidden gap-2 lg:flex">
 				{#each nav_links as link}
 					<a
 						class="rounded-md px-3 py-2 font-semibold tracking-wide text-gray-400 duration-300 hover:bg-gray-800 hover:text-gray-100"
@@ -27,7 +28,7 @@
 				{/each}
 			</div>
 
-			<div class="flex gap-2">
+			<div class="hidden gap-2 lg:flex">
 				{#each social_links as link}
 					<a
 						target="_blank"
@@ -39,6 +40,9 @@
 					</a>
 				{/each}
 			</div>
+			<button on:click={() => (navOpen = !navOpen)} class="grid place-items-center text-gray-300">
+				<iconify-icon class="lg:hidden" icon="mdi:menu-open" width="2.5rem" />
+			</button>
 		</nav>
 	</div>
 </header>

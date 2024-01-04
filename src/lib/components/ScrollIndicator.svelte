@@ -2,7 +2,7 @@
 	export let visible: boolean = true;
 </script>
 
-<div class="z-20 flex w-full items-center">
+<div class="z-10 flex w-full items-center">
 	<a
 		href="#work"
 		class="group flex items-center gap-4 text-gray-400 {visible ||
