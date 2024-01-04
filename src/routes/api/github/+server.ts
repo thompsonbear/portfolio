@@ -53,7 +53,7 @@ export const GET = async () => {
 
     if(!res?.data) { // Fallback
         let id = 0;
-        for(let x = 0; x < 54; x++) {
+        for(let x = 0; x < 53; x++) {
             let week: Contribution[] = [];
             for(let y = 0; y < 7; y++) {
                 week.push({
