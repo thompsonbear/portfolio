@@ -68,6 +68,29 @@ const projects: Project[] = [
         href: 'https://dainichiusa.com',
     }
 ];
+// interface Experience {
+//     organization: string;
+//     title: string;
+//     start_date: string;
+//     description?: string;
+//     location?:string;
+//     end_date?: string;
+// }
+const experience: Experience[] = [{
+    organization: 'Select Koi',
+    title: 'Web Developer/IT Manager',
+    start_date: '2023-01-15',
+    description: 'Own, develop, and deploy auction websites dainchiusa.com and auctionkoi.com for Japanese koi fish. Establish IT systems, overhaul networking, workstations, and inventory systems.',
+    location: 'Sevierville, TN'
+},{
+    organization: 'Cornerstone IT',
+    title: 'Network Engineer',
+    start_date: '2022-03-01',
+    description: 'Resolved escalated tickets and completed assigned network and cloud projects. Specialized in Microsoft Azure and SonicWALL firewalls.',
+    location: 'Sevierville, TN (Remote)',
+    end_date: '2022-12-15'
+}
+]
 
 
 
@@ -91,6 +114,7 @@ export const load = async () => {
         social_links,
         contact_links,
         projects,
+        experience,
         contributions: getContributions(),
         contribution_total: getContributionTotal(),
     }

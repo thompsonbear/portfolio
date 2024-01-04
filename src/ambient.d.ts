@@ -26,3 +26,12 @@ interface Point {
     x: number;
     y: number;
 }
+
+interface Experience {
+    organization: string;
+    title: string;
+    start_date: string;
+    description?: string;
+    location?:string;
+    end_date?: string;
+}

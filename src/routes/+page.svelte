@@ -2,7 +2,7 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
-	const { projects, contributions, contribution_total } = data;
+	const { projects, experience, contributions, contribution_total } = data;
 
 	import ScaleGrid from '$lib/components/scalegrid/ScaleGrid.svelte';
 	import ScaleGridItem from '$lib/components/scalegrid/ScaleGridItem.svelte';
@@ -16,6 +16,7 @@
 
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
+	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
 
 	function getNumCols(): number {
 		if (innerWidth > 1200) return 3;
@@ -31,12 +32,11 @@
 
 <svelte:window bind:innerWidth bind:scrollY />
 
-<div class="fixed left-0 top-0 h-screen w-screen">
+<div class="fixed right-0 top-0 h-screen w-screen">
 	<Canvas>
 		<Scene {contributions} {contribution_total} />
 	</Canvas>
 </div>
-
 <section
 	id="home"
 	class="pointer-events-none relative flex h-[calc(100vh-4rem)] flex-col justify-around"
@@ -65,7 +65,7 @@
 	<ScrollIndicator visible={scrollY < 100} />
 </section>
 
-<section id="work" class="z-10 mb-40 min-h-screen">
+<section id="work" class="z-10">
 	<h1 class=" pointer-events-auto mb-6 text-3xl font-semibold tracking-wide">Recent Work</h1>
 
 	<div class="hidden w-full max-w-7xl sm:block">
@@ -90,5 +90,15 @@
 				</CardScrollerItem>
 			{/each}
 		</CardScroller>
+	</div>
+</section>
+
+<section id="resume" class="z-10 mt-12">
+	<h1 class="pointer-events-auto mb-6 text-3xl font-semibold tracking-wide">Experience</h1>
+
+	<div class="w-full max-w-7xl space-y-4">
+		{#each experience as exp}
+			<ExperienceCard {exp} />
+		{/each}
 	</div>
 </section>
