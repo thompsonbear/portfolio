@@ -5,10 +5,11 @@ const config = {
 	theme: {
 		extend: {
 			screens: {
-				'xs': '320px',
+				xs: '320px'
 			}
 		}
 	},
+	safelist: ['bg-gray-900', 'peer-focus:bg-gray-900'],
 
 	plugins: []
 };
