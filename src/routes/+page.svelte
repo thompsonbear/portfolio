@@ -20,7 +20,7 @@
 
 <svelte:head>
 	<title>Thompson Bear</title>
-	<meta name="description" content="Thompson Bear's web development portfolio website" />
+	<meta name="description" content="Thompson Bear's web development portfolio" />
 </svelte:head>
 
 <svelte:window bind:innerWidth bind:scrollY />
