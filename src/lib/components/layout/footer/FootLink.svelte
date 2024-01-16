@@ -9,5 +9,5 @@
 	href={nav_link.href}
 >
 	<iconify-icon icon={nav_link.icon} height="1.2rem" />
-	<span class="max-w-[50vw] truncate">{nav_link.text}</span>
+	<span class="max-w-[65vw] overflow-hidden text-ellipsis">{nav_link.text}</span>
 </a>

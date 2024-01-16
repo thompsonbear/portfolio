@@ -40,10 +40,9 @@
 		let coltext = generate_template_text(cols, active?.x);
 		let rowtext = generate_template_text(rows, active?.y);
 
-		return `grid-template-columns: ${coltext}; grid-template-rows: ${rowtext}; min-height: ${multiplyCSSUnit(
-			item_min_height,
-			rows
-		)};`;
+		let gridheight = multiplyCSSUnit(item_min_height, rows);
+
+		return `grid-template-columns: ${coltext}; grid-template-rows: ${rowtext}; height: ${gridheight};`;
 	}
 
 	onMount(() => {
@@ -56,7 +55,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
 	style={grid_style}
-	class="grid h-full gap-4 duration-500 {grid_style || 'hidden'}"
+	class="grid gap-4 duration-500 {grid_style || 'hidden'}"
 	on:mouseleave={() => active.set(undefined)}
 >
 	<slot />

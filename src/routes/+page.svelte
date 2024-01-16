@@ -3,19 +3,17 @@
 	export let data: PageData;
 	export let form;
 
-	const { projects, experience, contributions, contribution_total, contact_links, social_links } =
-		data;
+	const { projects, contributions, contribution_total, contact_links, social_links } = data;
 
 	let innerWidth: number = 0;
 	let scrollY: number = 0;
 
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
-	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
 
-	import Contact from './Contact.svelte';
 	import Home from './Home.svelte';
 	import Projects from './Projects.svelte';
+	import Contact from './Contact.svelte';
 </script>
 
 <svelte:head>

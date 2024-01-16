@@ -7,11 +7,6 @@ const nav_links: NavLink[] = [
 		href: '#work'
 	},
 	{
-		icon: 'mdi:text-box',
-		text: 'Resume',
-		href: '#resume'
-	},
-	{
 		icon: 'mdi:email-variant',
 		text: 'Contact',
 		href: '#contact'
@@ -36,8 +31,8 @@ const social_links: NavLink[] = [
 const contact_links: NavLink[] = [
 	{
 		icon: 'mdi:email-variant',
-		text: 'tbear@thompsonbear.com',
-		href: 'mailto:tbear@thompsonbear.com'
+		text: 'thompsonbear21@gmail.com',
+		href: 'mailto:thompsonbear21@gmail.com'
 	},
 	{
 		icon: 'mdi:phone',
@@ -52,46 +47,28 @@ const projects: Project[] = [
 		description: 'You are here!',
 		tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Vercel'],
 		href: 'https://thompsonbear.com',
-		github: 'https://github.com/thompsonbear/portfolio'
+		github: 'https://github.com/thompsonbear/portfolio',
+		image_url: '/images/projects/portfolio/thompsonbear.png'
 	},
 	{
 		title: 'Auction Koi',
 		description: 'A Japanese koi auction website for Select Koi in Sevierville, TN.',
 		tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-		href: 'https://auctionkoi.com'
+		href: 'https://auctionkoi.com',
+		image_url: '/images/projects/auctionkoi/auctionkoi.png'
 	},
 	{
 		title: 'Dainichi USA',
 		description:
 			'A Japanese koi auction website for one of the most prestigious koi farms in the world.',
 		tags: ['Svelte', 'SvelteKit', 'TailwindCSS', 'Supabase', 'Stripe', 'Vercel'],
-		href: 'https://dainichiusa.com'
-	}
-];
-
-const experience: Experience[] = [
-	{
-		organization: 'Select Koi',
-		title: 'Web Developer/IT Manager',
-		start_date: '2023-01-15',
-		description:
-			'Own, develop, and deploy auction websites dainchiusa.com and auctionkoi.com for Japanese koi fish. Establish IT systems, overhaul networking, workstations, and inventory systems.',
-		location: 'Sevierville, TN'
-	},
-	{
-		organization: 'Cornerstone IT',
-		title: 'Network Engineer',
-		start_date: '2022-03-01',
-		description:
-			'Resolved escalated tickets and completed assigned network and cloud projects. Specialized in Microsoft Azure and SonicWALL firewalls.',
-		location: 'Sevierville, TN (Remote)',
-		end_date: '2022-12-15'
+		href: 'https://dainichiusa.com',
+		image_url: '/images/projects/dainichiusa/dainichiusa.png'
 	}
 ];
 
 export const load = async () => {
 	async function getContributions() {
-		// generate random contributions for the last year
 		let endpoint = new URL('/api/github', PUBLIC_HOST_URL);
 		const res = await fetch(endpoint);
 
@@ -99,7 +76,6 @@ export const load = async () => {
 	}
 
 	async function getContributionTotal() {
-		// generate random contributions for the last year
 		let endpoint = new URL('/api/github/total', PUBLIC_HOST_URL);
 		const res = await fetch(endpoint);
 
@@ -111,7 +87,6 @@ export const load = async () => {
 		social_links,
 		contact_links,
 		projects,
-		experience,
 		contributions: getContributions(),
 		contribution_total: getContributionTotal()
 	};

@@ -16,7 +16,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class="h-full w-full rounded-lg border border-gray-700 bg-gray-800 backdrop-blur-md"
+	class="relative grid h-full w-full place-items-center overflow-clip rounded-lg border border-gray-700 bg-gray-800 backdrop-blur-md"
 	on:mouseenter={() => (overlay_visible = true)}
 	on:mouseleave={() => (overlay_visible = false)}
 >
@@ -30,7 +30,11 @@
 			src={project.video_url}
 		/>
 	{:else if project?.image_url}
-		<img src={project.image_url} alt={project.title} class="h-full w-full object-cover" />
+		<img
+			src={project.image_url}
+			alt={project.title}
+			class="absolute flex h-full w-full object-cover"
+		/>
 	{:else}
 		<div class="flex h-full w-full items-center justify-center">
 			<p class="text-gray-400">Preview coming soon.</p>
