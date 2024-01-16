@@ -106,10 +106,11 @@
 					{#each contact_links as link}
 						<a
 							href={link.href}
-							class="flex w-fit items-center gap-2 rounded-md px-1.5 py-1 text-gray-300 duration-300 hover:bg-gray-700 hover:text-gray-100"
+							class="flex w-full items-center gap-2 rounded-md px-1.5 py-1 text-gray-300 duration-300 hover:bg-gray-700 hover:text-gray-100"
 						>
 							<iconify-icon icon={link.icon} width="1.5rem" />
-							<span class="text-lg font-bold">{link.text}</span>
+							<span class="w-full overflow-hidden text-ellipsis text-lg font-bold">{link.text}</span
+							>
 						</a>
 					{/each}
 				</div>
