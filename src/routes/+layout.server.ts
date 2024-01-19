@@ -1,5 +1,3 @@
-import { PUBLIC_HOST_URL } from '$env/static/public';
-
 const nav_links: NavLink[] = [
 	{
 		icon: 'mdi:web',
