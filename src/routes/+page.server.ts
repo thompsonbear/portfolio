@@ -1,4 +1,3 @@
-import { ZodError } from 'zod';
 import { contactSchema } from '$lib/schemas/contact/contactSchema';
 import sendgrid from '@sendgrid/mail';
 import { PRIVATE_SENDGRID_API_KEY } from '$env/static/private';
