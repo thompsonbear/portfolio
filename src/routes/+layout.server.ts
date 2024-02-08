@@ -65,17 +65,15 @@ const projects: Project[] = [
 	}
 ];
 
-export const load = async ({url}) => {
+export const load = async ({ fetch }) => {
 	async function getContributions() {
-		let endpoint = new URL('/api/github', url?.origin);
-		const res = await fetch(endpoint);
+		const res = await fetch('/api/github');
 
 		return !res.ok ? [] : res.json();
 	}
 
 	async function getContributionTotal() {
-		let endpoint = new URL('/api/github/total', url?.origin);
-		const res = await fetch(endpoint);
+		const res = await fetch('/api/github/total');
 
 		return !res.ok ? 0 : res.json();
 	}
