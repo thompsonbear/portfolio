@@ -8,10 +8,22 @@
 	import { enhance } from '$app/forms';
 	import { contactSchema } from '$lib/schemas/contact/contactSchema';
 	import type { ActionData } from './$types';
+	import { PUBLIC_HCAPTCHA_SITE_KEY } from '$env/static/public';
+	import { hCaptchaLoader } from '@hcaptcha/loader';
+	import { onMount } from 'svelte';
+
 	let btnText = 'Send Message';
 	let btnIcon: string | undefined = 'mdi:send';
 	let btnClasses: string;
 	let loading = false;
+
+	onMount(async () => {
+		const hcaptcha = await hCaptchaLoader();
+		hcaptcha.render('hCaptcha', {
+			sitekey: PUBLIC_HCAPTCHA_SITE_KEY,
+			theme: 'dark'
+		});
+	});
 </script>
 
 <section id="contact" class="pointer-events-auto max-w-4xl">
@@ -25,6 +37,7 @@
 			class="space-y-8"
 			use:enhance={({ formElement, cancel }) => {
 				loading = true;
+
 				let formData = Object.fromEntries(new FormData(formElement));
 
 				let validData = contactSchema.safeParse(formData);
@@ -55,6 +68,11 @@
 						btnText = 'Message Sent!';
 						btnIcon = 'mdi:check-bold';
 						btnClasses = 'bg-green-600 hover:bg-green-500 focus:bg-green-500';
+						resetBtn();
+					} else {
+						btnText = 'Error Sending Message';
+						btnIcon = undefined;
+						btnClasses = 'bg-red-600 hover:bg-red-500 focus:bg-red-500';
 						resetBtn();
 					}
 
@@ -89,6 +107,7 @@
 						value={form?.data?.message.toString() || ''}
 						messages={form?.errors?.message}
 					/>
+					<div id="hCaptcha"></div>
 				</div>
 
 				<ContactSubmitBtn
